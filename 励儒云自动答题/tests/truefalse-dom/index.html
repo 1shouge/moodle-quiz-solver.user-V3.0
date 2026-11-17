@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>判断题抓取/填答测试</title>
+<style>
+  .que { border: 1px solid #ccc; margin: 8px; padding: 8px; }
+  label { margin-left: 4px; }
+</style>
+</head>
+<body>
+<h1>判断题测试夹具</h1>
+
+<!-- 1. 标准 Moodle 结构：div.answer > div.rN，label for= -->
+<div class="que truefalse" id="q1">
+  <div class="info"><h3 class="no">试题 <span class="qno">1</span></h3></div>
+  <div class="content"><div class="formulation">
+    <div class="qtext">标准结构：对还是错？</div>
+    <fieldset class="ablock"><legend>回答</legend><div class="answer">
+      <div class="r0"><input type="radio" id="q1:1_true" name="q1:1_answer" value="1" />
+        <label for="q1:1_true"><span class="answernumber">A. </span>对</label></div>
+      <div class="r1"><input type="radio" id="q1:1_false" name="q1:1_answer" value="0" />
+        <label for="q1:1_false"><span class="answernumber">B. </span>错</label></div>
+    </div></fieldset>
+  </div></div>
+</div>
+
+<!-- 2. 标签是「正确/错误」而不是「对/错」 -->
+<div class="que truefalse" id="q2">
+  <div class="info"><h3 class="no">试题 <span class="qno">2</span></h3></div>
+  <div class="content"><div class="formulation">
+    <div class="qtext">标签为正确错误</div>
+    <fieldset class="ablock"><legend>回答</legend><div class="answer">
+      <div class="r0"><input type="radio" id="q2:2_true" name="q2:2_answer" value="1" />
+        <label for="q2:2_true"><span class="answernumber">A. </span>正确</label></div>
+      <div class="r1"><input type="radio" id="q2:2_false" name="q2:2_answer" value="0" />
+        <label for="q2:2_false"><span class="answernumber">B. </span>错误</label></div>
+    </div></fieldset>
+  </div></div>
+</div>
+
+<!-- 3. 主题多包了一层：div.answer > div.inner > div.rN -->
+<div class="que truefalse" id="q3">
+  <div class="info"><h3 class="no">试题 <span class="qno">3</span></h3></div>
+  <div class="content"><div class="formulation">
+    <div class="qtext">选项被多包一层</div>
+    <fieldset class="ablock"><legend>回答</legend><div class="answer">
+      <div class="inner">
+        <div class="r0"><input type="radio" id="q3:3_true" name="q3:3_answer" value="1" />
+          <label for="q3:3_true"><span class="answernumber">A. </span>对</label></div>
+        <div class="r1"><input type="radio" id="q3:3_false" name="q3:3_answer" value="0" />
+          <label for="q3:3_false"><span class="answernumber">B. </span>错</label></div>
+      </div>
+    </div></fieldset>
+  </div></div>
+</div>
+
+<!-- 4. 没有 label 文字，只能靠 input id=_true/_false 推断 -->
+<div class="que truefalse" id="q4">
+  <div class="info"><h3 class="no">试题 <span class="qno">4</span></h3></div>
+  <div class="content"><div class="formulation">
+    <div class="qtext">没有 label 文字</div>
+    <fieldset class="ablock"><legend>回答</legend><div class="answer">
+      <div class="r0"><input type="radio" id="q4:4_true" name="q4:4_answer" value="1" /></div>
+      <div class="r1"><input type="radio" id="q4:4_false" name="q4:4_answer" value="0" /></div>
+    </div></fieldset>
+  </div></div>
+</div>
+
+<!-- 5. 完全没有 rN / answer 直接子项，input 藏得很深 -->
+<div class="que truefalse" id="q5">
+  <div class="info"><h3 class="no">试题 <span class="qno">5</span></h3></div>
+  <div class="content"><div class="formulation">
+    <div class="qtext">深层嵌套选项</div>
+    <fieldset class="ablock"><legend>回答</legend><div class="answer">
+      <div class="inner"><div class="option">
+        <input type="radio" id="q5:5_true" name="q5:5_answer" value="1" />
+        <label for="q5:5_true">正确</label>
+      </div><div class="option">
+        <input type="radio" id="q5:5_false" name="q5:5_answer" value="0" />
+        <label for="q5:5_false">错误</label>
+      </div></div>
+    </div></fieldset>
+  </div></div>
+</div>
+
+<!-- 6. 没有 label、没有 id，只有 value 1/0 -->
+<div class="que truefalse" id="q6">
+  <div class="info"><h3 class="no">试题 <span class="qno">6</span></h3></div>
+  <div class="content"><div class="formulation">
+    <div class="qtext">只有 value 1/0</div>
+    <fieldset class="ablock"><legend>回答</legend><div class="answer">
+      <div class="r0"><input type="radio" name="q6:6_answer" value="1" /></div>
+      <div class="r1"><input type="radio" name="q6:6_answer" value="0" /></div>
+    </div></fieldset>
+  </div></div>
+</div>
+
+<!-- 7. Moodle 4.x core 真实结构：label 自身带 class="ms-1" -->
+<div class="que truefalse" id="q7">
+  <div class="info"><h3 class="no">试题 <span class="qno">7</span></h3></div>
+  <div class="content"><div class="formulation">
+    <div class="qtext">Moodle core 结构</div>
+    <fieldset class="ablock"><legend class="sr-only">答案</legend><div class="answer">
+      <div class="r0"><input type="radio" name="q7:1_answer" value="1" id="q7:1_answertrue" />
+        <label for="q7:1_answertrue" class="ms-1">正确</label></div>
+      <div class="r1"><input type="radio" name="q7:1_answer" value="0" id="q7:1_answerfalse" />
+        <label for="q7:1_answerfalse" class="ms-1">错误</label></div>
+    </div></fieldset>
+  </div></div>
+</div>
+
+<template id="review-fixtures">
+  <!-- 回顾页：选中错误项（有 disabled input），未选中的正确项也显示 -->
+  <div class="que truefalse">
+    <div class="info"><h3 class="no">试题 <span class="qno">1</span></h3></div>
+    <div class="content"><div class="formulation">
+      <div class="qtext">回顾页标准结构</div>
+      <div class="state">错误</div>
+      <fieldset class="ablock"><div class="answer">
+        <div class="r0 incorrect"><input type="radio" disabled checked name="q1:1_answer" value="1" id="r1_true" />
+          <label for="r1_true" class="ms-1">正确</label></div>
+        <div class="r1 correct"><input type="radio" disabled name="q1:1_answer" value="0" id="r1_false" />
+          <label for="r1_false" class="ms-1">错误</label></div>
+      </div></fieldset>
+    </div></div>
+  </div>
+
+  <!-- 回顾页：完全没有 input，只能靠行 class 推断 -->
+  <div class="que truefalse">
+    <div class="info"><h3 class="no">试题 <span class="qno">2</span></h3></div>
+    <div class="content"><div class="formulation">
+      <div class="qtext">回顾页没有 input</div>
+      <div class="state">错误</div>
+      <fieldset class="ablock"><div class="answer">
+        <div class="r0 incorrect"><label class="ms-1">正确</label></div>
+        <div class="r1 correct"><label class="ms-1">错误</label></div>
+      </div></fieldset>
+    </div></div>
+  </div>
+
+  <!-- 回顾页：多包一层 -->
+  <div class="que truefalse">
+    <div class="info"><h3 class="no">试题 <span class="qno">3</span></h3></div>
+    <div class="content"><div class="formulation">
+      <div class="qtext">回顾页多包一层</div>
+      <div class="state">正确</div>
+      <fieldset class="ablock"><div class="answer"><div class="inner">
+        <div class="r0"><input type="radio" disabled name="q3:3_answer" value="1" id="r3_true" />
+          <label for="r3_true" class="ms-1">正确</label></div>
+        <div class="r1 correct"><input type="radio" disabled checked name="q3:3_answer" value="0" id="r3_false" />
+          <label for="r3_false" class="ms-1">错误</label></div>
+      </div></div></fieldset>
+    </div></div>
+  </div>
+</template>
+
+<script src="qa-bundle.js"></script>
+<script src="tests.js"></script>
+</body>
+</html>
