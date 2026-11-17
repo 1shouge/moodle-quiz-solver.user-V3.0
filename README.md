@@ -1,5 +1,10 @@
 # moodle-quiz-solver.user-V3.0
 基于https://github.com/linCO2/SCNU-Liru-Online-Courses  做的励儒云课堂自动测验脚本更新。
+包含了原仓库的内容。
+# 使用方法
+励儒云自动答题/userscripts/moodle-quiz-solver.user.js
+导入到Tampermonkey  
+记得开放权限
 # 更新内容
 1.增加了自动试错直到满分的功能。
 2.修复了一些bug
